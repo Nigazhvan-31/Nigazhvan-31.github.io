@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: 'DM Sans', sans-serif; background: #f2f0ec; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+.font-display { font-family: 'DM Sans', sans-serif; font-weight: 700; }
+.font-display .italic { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.055em; }
+.web { stroke: #151515; stroke-width: .8; }
+.hero-web { transform: rotate(-18deg); }
+.spider { position: relative; width: 13px; height: 14px; display: inline-block; }
+.spider i, .spider b { background: #d5292d; position: absolute; left: 50%; transform: translateX(-50%); }
+.spider i { width: 7px; height: 7px; border-radius: 50%; top: 1px; }
+.spider b { width: 4px; height: 5px; border-radius: 50% 50% 65% 65%; top: 7px; }
+.spider::before, .spider::after { content: ''; position: absolute; left: 0; top: 5px; width: 13px; height: 7px; border-top: 1px solid #d5292d; border-bottom: 1px solid #d5292d; transform: skewY(-28deg); }
+.spider::after { transform: skewY(28deg); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
