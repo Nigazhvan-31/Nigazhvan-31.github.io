@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import heroArtwork from './assets/ai-neural-core.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,7 +93,7 @@ export default function App() {
         <div className="orbital-dot absolute right-[11%] top-[27%] h-28 w-28 rounded-full border border-[#d5292d]/40" />
         <nav className="relative z-10 flex items-center justify-between border-b border-black/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
           <a className="nav-item font-bold tracking-[0.12em]" href="#top">N<span className="text-[#d5292d]">G</span> / 26</a>
-          <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#d5292d]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#d5292d] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#d5292d]" href="mailto:nigalgovi@gmail.com">Contact</a></div>
+          <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#d5292d]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#d5292d] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#d5292d]" href="#contact">Contact</a></div>
         </nav>
 
         <div id="top" className="relative z-[1] mx-auto flex min-h-[calc(100vh-84px)] max-w-[1500px] flex-col justify-center pt-16 lg:pt-8">
@@ -103,15 +104,15 @@ export default function App() {
               <span className="hero-word block overflow-hidden pl-[8%] text-[#d5292d]">Signals</span>
               <span className="hero-word block pl-[23%]">Matter<span className="text-[#d5292d]">.</span></span>
             </h1>
-            <div ref={heroVisual} onMouseMove={handleMove} className="hero-card absolute -right-4 top-[3%] hidden aspect-[3/4] w-[23%] min-w-[210px] overflow-hidden rounded-full bg-black shadow-[18px_20px_0_#d5292d] lg:block">
-              <img className="h-full w-full object-cover grayscale" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=85" alt="Abstract neural structures" />
-              <div ref={reveal} className="absolute inset-0" style={{ clipPath: `circle(25% at ${pointer.x}% ${pointer.y}%)` }}><img className="h-full w-full object-cover" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=85" alt="" /></div>
+            <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto mt-10 aspect-[3/4] w-[min(66vw,260px)] overflow-hidden rounded-full bg-black shadow-[18px_20px_0_#d5292d] lg:absolute lg:-right-4 lg:top-[3%] lg:mx-0 lg:mt-0 lg:w-[23%] lg:min-w-[210px]">
+              <img className="h-full w-full object-cover grayscale" src={heroArtwork} alt="Abstract AI network sculpture with glowing red signal nodes" fetchPriority="high" />
+              <div ref={reveal} className="absolute inset-0" style={{ clipPath: `circle(25% at ${pointer.x}% ${pointer.y}%)` }}><img className="h-full w-full object-cover" src={heroArtwork} alt="" aria-hidden="true" /></div>
               <span className="absolute bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.2em] text-white">Explore / 01</span>
             </div>
           </div>
           <div className="mt-12 grid max-w-xl gap-7 sm:ml-[8%] sm:grid-cols-[1fr_auto] sm:items-end">
             <p className="hero-copy max-w-sm text-sm leading-relaxed text-black/65 sm:text-base">Junior AI engineer building reliable data workflows, intelligent backend systems, and useful ML-powered products.</p>
-            <div className="hero-actions flex gap-3"><a href="#work" className="rounded-full bg-[#151515] px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-white transition hover:bg-[#d5292d]">View my work ↘</a><a href="mailto:nigalgovi@gmail.com" className="rounded-full border border-black/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] transition hover:border-[#d5292d] hover:text-[#d5292d]">Let’s talk</a></div>
+            <div className="hero-actions flex gap-3"><a href="#work" className="rounded-full bg-[#151515] px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-white transition hover:bg-[#d5292d]">View my work ↘</a><a href="#contact" className="rounded-full border border-black/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] transition hover:border-[#d5292d] hover:text-[#d5292d]">Let’s talk</a></div>
           </div>
           <div className="hero-meta mt-14 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[.16em] text-black/45"><span className="h-2 w-2 rounded-full bg-[#d5292d]" /> Available for select collaborations <span className="ml-auto hidden sm:block">Scroll to unspool</span></div>
         </div>
@@ -160,7 +161,31 @@ export default function App() {
       </section>
 
       <section className="section-reveal border-t border-black/15 bg-[#d5292d] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr]"><div className="reveal-item"><p className="font-mono text-[10px] uppercase tracking-[.22em] text-white/70">04 / Education + contact</p><h2 className="font-display mt-5 text-[clamp(3.6rem,7vw,7rem)] uppercase leading-[.78] tracking-[-.07em]">Always<br /><span className="italic">learning.</span></h2></div><div className="reveal-item divide-y divide-white/30 border-y border-white/30"><div className="py-6"><p className="text-xl font-semibold">M.Sc. Artificial Intelligence and Machine Learning</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">Christ Deemed to be University · Bengaluru, Karnataka · Jun 2024 — May 2026</p></div><div className="py-6"><p className="text-xl font-semibold">B.Sc. Statistics</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">PSG College of Arts and Science · Coimbatore, Tamil Nadu · Jun 2020 — May 2023</p></div><div className="grid gap-3 py-6 font-mono text-[10px] uppercase tracking-[.14em] sm:grid-cols-2"><a className="transition hover:text-black" href="mailto:nigalgovi@gmail.com">nigalgovi@gmail.com</a><a className="transition hover:text-black" href="tel:+918838265269">+91 88382 65269</a><a className="transition hover:text-black" href="https://linkedin.com/in/nigazhvan-g2525" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="transition hover:text-black" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></div>
+        <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr]">
+          <div className="reveal-item"><p className="font-mono text-[10px] uppercase tracking-[.22em] text-white/70">04 / Education</p><h2 className="font-display mt-5 text-[clamp(3.6rem,7vw,7rem)] uppercase leading-[.78] tracking-[-.07em]">Always<br /><span className="italic">learning.</span></h2></div>
+          <div className="reveal-item divide-y divide-white/30 border-y border-white/30">
+            <div className="py-6"><p className="text-xl font-semibold">M.Sc. Artificial Intelligence and Machine Learning</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">Christ Deemed to be University · Bengaluru, Karnataka · Jun 2024 — May 2026</p></div>
+            <div className="py-6"><p className="text-xl font-semibold">B.Sc. Statistics</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">PSG College of Arts and Science · Coimbatore, Tamil Nadu · Jun 2020 — May 2023</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="section-reveal relative overflow-hidden bg-[#151515] px-5 py-24 text-[#f2f0ec] sm:px-8 lg:px-12 lg:py-32">
+        <Web className="absolute -right-20 -top-20 h-80 w-80 opacity-15 [stroke:#f2f0ec]" />
+        <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:gap-24">
+          <div className="reveal-item">
+            <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[#e84c4f]">05 / Let’s talk</p>
+            <h2 className="font-display mt-5 text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[.78] tracking-[-.07em]">Let’s<br /><span className="italic">connect.</span></h2>
+            <p className="mt-9 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">Have an AI, ML, or data challenge worth solving? I’d love to hear about it.</p>
+            <a href="mailto:nigalgovi@gmail.com" className="mt-8 inline-flex rounded-full bg-[#d5292d] px-6 py-3 font-mono text-[10px] uppercase tracking-[.16em] text-white transition hover:bg-[#e84c4f]">Email me ↗</a>
+          </div>
+          <div className="reveal-item divide-y divide-white/20 border-y border-white/20">
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="mailto:nigalgovi@gmail.com"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">Email</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">nigalgovi@gmail.com ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="tel:+918838265269"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">Phone</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">+91 88382 65269 ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://linkedin.com/in/nigazhvan-g2525" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">LinkedIn</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">nigazhvan-g2525 ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">GitHub</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">Nigazhvan-31 ↗</span></a>
+          </div>
+        </div>
       </section>
     </main>
   );
