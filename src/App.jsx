@@ -44,7 +44,7 @@ export default function App() {
       const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
       intro
         .from('.nav-item', { y: -18, opacity: 0, stagger: 0.08, duration: 0.65 })
-        .from('.hero-kicker, .hero-word', { yPercent: 105, stagger: 0.11, duration: 1.05 }, '-=0.35')
+        .from('.hero-word', { yPercent: 105, stagger: 0.11, duration: 1.05 }, '-=0.35')
         .from('.hero-copy, .hero-actions, .hero-meta', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7 }, '-=0.48')
         .from('.hero-card', { scale: 0.88, rotate: -4, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=1.0');
 
@@ -91,18 +91,16 @@ export default function App() {
         <Web className="hero-web absolute -left-16 top-24 h-72 w-72 opacity-25" />
         <Web className="micro-web absolute -right-10 top-20 h-56 w-56 opacity-20" />
         <div className="orbital-dot absolute right-[11%] top-[27%] h-28 w-28 rounded-full border border-[#d5292d]/40" />
-        <nav className="relative z-10 flex items-center justify-between border-b border-black/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
-          <a className="nav-item font-bold tracking-[0.12em]" href="#top">N<span className="text-[#d5292d]">G</span> / 26</a>
+        <nav className="relative z-10 flex items-center justify-end border-b border-black/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
           <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#d5292d]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#d5292d] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#d5292d]" href="#contact">Contact</a></div>
         </nav>
 
         <div id="top" className="relative z-[1] mx-auto flex min-h-[calc(100vh-84px)] max-w-[1500px] flex-col justify-center pt-16 lg:pt-8">
-          <p className="hero-kicker overflow-hidden font-mono text-[10px] uppercase tracking-[0.28em] text-[#d5292d] sm:text-xs">Junior AI Engineer · Bengaluru, India</p>
-          <div className="relative mt-6 max-w-6xl overflow-visible">
-            <h1 className="font-display text-[clamp(4.25rem,12.5vw,12.5rem)] font-medium uppercase leading-[.74] tracking-[-0.075em]">
-              <span className="hero-word block overflow-hidden">Make</span>
-              <span className="hero-word block overflow-hidden pl-[8%] text-[#d5292d]">Signals</span>
-              <span className="hero-word block pl-[23%]">Matter<span className="text-[#d5292d]">.</span></span>
+          <div className="relative max-w-6xl overflow-visible">
+            <h1 className="font-display text-[clamp(3rem,10.5vw,11rem)] font-medium uppercase leading-[.78] tracking-[-0.075em]">
+              <span className="hero-word block overflow-hidden">From</span>
+              <span className="hero-word block overflow-hidden pl-[8%] text-[#d5292d]">Data</span>
+              <span className="hero-word block pl-[3%]">To Impact<span className="text-[#d5292d]">.</span></span>
             </h1>
             <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto mt-10 aspect-[3/4] w-[min(66vw,260px)] overflow-hidden rounded-full bg-black shadow-[18px_20px_0_#d5292d] lg:absolute lg:-right-4 lg:top-[3%] lg:mx-0 lg:mt-0 lg:w-[23%] lg:min-w-[210px]">
               <img className="h-full w-full object-cover grayscale" src={heroArtwork} alt="Abstract AI network sculpture with glowing red signal nodes" fetchPriority="high" />
@@ -123,9 +121,9 @@ export default function App() {
         <Web className="absolute -right-20 top-0 h-64 w-64 opacity-15" />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-24">
           <div className="pt-8">
-            <div className="about-eyebrow mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.22em] text-[#d5292d]"><Spider /> 01 / The human system</div>
-            <h2 className="font-display text-[clamp(4.1rem,8.5vw,8.7rem)] uppercase leading-[.77] tracking-[-.07em]">
-              <span className="about-line block overflow-hidden">Built for</span><span className="about-line block overflow-hidden pl-[10%] italic">the unknown<span className="text-[#d5292d]">.</span></span>
+            <div className="about-eyebrow mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.22em] text-[#d5292d]"><Spider /> The person behind the code</div>
+            <h2 className="font-display text-[clamp(3rem,7.4vw,8rem)] uppercase leading-[.8] tracking-[-.07em]">
+              <span className="about-line block overflow-hidden">Curiosity</span><span className="about-line block overflow-hidden pl-[8%] italic">into code<span className="text-[#d5292d]">.</span></span>
             </h2>
             <div className="mt-12 max-w-lg space-y-5 text-[15px] leading-relaxed text-black/65 sm:text-base">
               <p className="about-copy">I’m Nigazhvan, a Junior AI Engineer with a practical foundation in Python, SQL, data processing, ETL pipelines, and backend development.</p>
@@ -174,8 +172,7 @@ export default function App() {
         <Web className="absolute -right-20 -top-20 h-80 w-80 opacity-15 [stroke:#f2f0ec]" />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:gap-24">
           <div className="reveal-item">
-            <p className="font-mono text-[10px] uppercase tracking-[.22em] text-[#e84c4f]">05 / Let’s talk</p>
-            <h2 className="font-display mt-5 text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[.78] tracking-[-.07em]">Let’s<br /><span className="italic">connect.</span></h2>
+            <h2 className="font-display text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[.78] tracking-[-.07em]">Let’s<br /><span className="italic">connect.</span></h2>
             <p className="mt-9 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">Have an AI, ML, or data challenge worth solving? I’d love to hear about it.</p>
             <a href="mailto:nigalgovi@gmail.com" className="mt-8 inline-flex rounded-full bg-[#d5292d] px-6 py-3 font-mono text-[10px] uppercase tracking-[.16em] text-white transition hover:bg-[#e84c4f]">Email me ↗</a>
           </div>
