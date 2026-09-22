@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import heroArtwork from './assets/ai-neural-core.jpg';
+import heroArtwork from './assets/nocturne-ai-city.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,20 +15,16 @@ const projects = [
 ];
 
 const experience = [
-  { company: 'MetricsLand', location: 'Chennai, India', role: 'Junior AI Engineer', date: 'Aug 2026 — Present', points: ['Develop and debug Python backend integrations with APIs and data-processing workflows.', 'Automate AWS workflows with Python, Lambda, S3, and QuickSight; including dashboard data exports.', 'Customize Odoo workflows through routes, fields, triggers, and backend logic.'] },
-  { company: 'ETHARA.AI', location: 'Remote, India', role: 'LLM Intern', date: 'Feb 2026 — Jun 2026', points: ['Processed and validated structured datasets for model training and evaluation.', 'Investigated errors and tested model outputs to improve dataset quality, consistency, and reliability.', 'Worked cross-functionally to deliver accurate data within project timelines.'] }
+  { company: 'MetricsLand', location: 'Chennai, India', role: 'Junior AI Engineer', date: 'Aug 2026 - Present', points: ['Develop and debug Python backend integrations with APIs and data-processing workflows.', 'Automate AWS workflows with Python, Lambda, S3, and QuickSight; including dashboard data exports.', 'Customize Odoo workflows through routes, fields, triggers, and backend logic.'] },
+  { company: 'ETHARA.AI', location: 'Remote, India', role: 'LLM Intern', date: 'Feb 2026 - Jun 2026', points: ['Processed and validated structured datasets for model training and evaluation.', 'Investigated errors and tested model outputs to improve dataset quality, consistency, and reliability.', 'Worked cross-functionally to deliver accurate data within project timelines.'] }
 ];
 
-function Web({ className = '' }) {
-  return (
-    <svg className={`web ${className}`} viewBox="0 0 220 220" fill="none" aria-hidden="true">
-      <path d="M110 0v220M0 110h220M32 32l156 156M188 32 32 188M110 26c46 0 84 38 84 84s-38 84-84 84-84-38-84-84 38-84 84-84Zm0 22c34 0 62 28 62 62s-28 62-62 62-62-28-62-62 28-62 62-62Zm0 22c22 0 40 18 40 40s-18 40-40 40-40-18-40-40 18-40 40-40Z" />
-    </svg>
-  );
+function WingMark() {
+  return <span className="wing-mark" aria-hidden="true" />;
 }
 
-function Spider() {
-  return <span className="spider" aria-hidden="true"><i /><b /></span>;
+function ShadowBat() {
+  return <span className="shadow-bat" aria-hidden="true" />;
 }
 
 export default function App() {
@@ -36,21 +32,19 @@ export default function App() {
   const heroVisual = useRef(null);
   const reveal = useRef(null);
   const portrait = useRef(null);
-  const [pointer, setPointer] = useState({ x: 52, y: 46 });
-
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       // Entrance sequences are deliberately distinct from long-running ambient motion.
       const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
       intro
         .from('.nav-item', { y: -18, opacity: 0, stagger: 0.08, duration: 0.65 })
         .from('.hero-word', { yPercent: 105, stagger: 0.11, duration: 1.05 }, '-=0.35')
-        .from('.hero-copy, .hero-actions, .hero-meta', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7 }, '-=0.48')
-        .from('.hero-card', { scale: 0.88, rotate: -4, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=1.0');
+        .from('.hero-copy, .hero-actions', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7 }, '-=0.48')
+        .from('.hero-card', { scale: 0.92, y: 32, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=0.9');
 
-      gsap.to('.orbital-dot', { rotate: 360, duration: 18, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
-      gsap.to('.micro-web', { rotate: 7, y: 8, duration: 3.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-      gsap.to('.hero-card', { y: -10, duration: 3.8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to('.light-beam', { opacity: 0.68, duration: 4.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to('.hero-card', { y: -8, duration: 4.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
 
       const about = gsap.timeline({
         scrollTrigger: { trigger: '.about-section', start: 'top 72%', once: true }
@@ -60,10 +54,9 @@ export default function App() {
         .from('.about-line', { clipPath: 'inset(0 0 100% 0)', y: 35, stagger: 0.14, duration: 0.95, ease: 'power4.out' }, '-=0.1')
         .from('.about-copy', { opacity: 0, rotateX: 18, transformOrigin: 'top center', y: 18, stagger: 0.14, duration: 0.75, ease: 'power3.out' }, '-=0.38')
         .from('.skill-pill', { scale: 0.5, opacity: 0, stagger: 0.07, duration: 0.55, ease: 'back.out(1.8)' }, '-=0.35')
-        .from('.portrait-wrap', { opacity: 0, y: 58, rotate: -4, duration: 1.25, ease: 'elastic.out(1, 0.55)' }, '-=1.1');
+        .from('.portrait-wrap', { opacity: 0, y: 48, duration: 1.15, ease: 'power3.out' }, '-=1.1');
 
-      gsap.to('.portrait-wrap', { rotate: 2.4, duration: 4.6, yoyo: true, repeat: -1, ease: 'sine.inOut', transformOrigin: '50% -32%' });
-      gsap.to('.portrait-halo', { scale: 1.12, opacity: 0.28, duration: 2.4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to('.portrait-halo', { scale: 1.08, opacity: 0.3, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       gsap.utils.toArray('.skill-pill').forEach((pill, i) => {
         gsap.to(pill, { y: i % 2 ? -5 : 5, duration: 2.5 + i * 0.14, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: i * 0.1 });
       });
@@ -82,105 +75,98 @@ export default function App() {
     const box = heroVisual.current.getBoundingClientRect();
     const x = ((event.clientX - box.left) / box.width) * 100;
     const y = ((event.clientY - box.top) / box.height) * 100;
-    setPointer({ x, y });
+    reveal.current.style.clipPath = `circle(24% at ${x}% ${y}%)`;
   };
 
   return (
-    <main ref={root} className="bg-[#f2f0ec] text-[#151515] selection:bg-[#d5292d] selection:text-white">
-      <section className="hero-section relative min-h-screen overflow-hidden px-5 pb-8 pt-5 sm:px-8 lg:px-12">
-        <Web className="hero-web absolute -left-16 top-24 h-72 w-72 opacity-25" />
-        <Web className="micro-web absolute -right-10 top-20 h-56 w-56 opacity-20" />
-        <div className="orbital-dot absolute right-[11%] top-[27%] h-28 w-28 rounded-full border border-[#d5292d]/40" />
-        <nav className="relative z-10 flex items-center justify-end border-b border-black/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
-          <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#d5292d]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#d5292d] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#d5292d]" href="#contact">Contact</a></div>
+    <main ref={root} className="bg-[#0d1219] text-[#eeece5] selection:bg-[#c8ab6b] selection:text-[#0d1219]">
+      <section className="hero-section relative min-h-[100dvh] overflow-hidden bg-[#0d1219] px-5 pb-12 pt-5 sm:px-8 lg:px-12">
+        <div className="light-beam pointer-events-none absolute -right-[14%] -top-[40%] h-[115%] w-[75%] opacity-35" aria-hidden="true" />
+        <ShadowBat />
+        <nav className="relative z-10 flex items-center justify-end border-b border-white/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
+          <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#c8ab6b]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#c8ab6b] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#c8ab6b]" href="#contact">Contact</a></div>
         </nav>
 
-        <div id="top" className="relative z-[1] mx-auto flex min-h-[calc(100vh-84px)] max-w-[1500px] flex-col justify-center pt-16 lg:pt-8">
-          <div className="relative max-w-6xl overflow-visible">
-            <h1 className="font-display text-[clamp(3rem,10.5vw,11rem)] font-medium uppercase leading-[.78] tracking-[-0.075em]">
-              <span className="hero-word block overflow-hidden">From</span>
-              <span className="hero-word block overflow-hidden pl-[8%] text-[#d5292d]">Data</span>
-              <span className="hero-word block pl-[3%]">To Impact<span className="text-[#d5292d]">.</span></span>
+        <div id="top" className="relative z-[1] mx-auto grid min-h-[calc(100dvh-84px)] max-w-[1400px] items-center gap-8 py-12 lg:grid-cols-[1.25fr_.75fr] lg:gap-12 lg:py-8">
+          <div className="relative">
+            <h1 className="font-display text-[clamp(3.05rem,8.4vw,8.5rem)] font-medium uppercase leading-[.86] tracking-[-0.075em]">
+              <span className="hero-word block overflow-hidden whitespace-nowrap">From <span className="text-[#c8ab6b]">Data</span></span>
+              <span className="hero-word block overflow-hidden whitespace-nowrap">To Impact<span className="text-[#c8ab6b]">.</span></span>
             </h1>
-            <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto mt-10 aspect-[3/4] w-[min(66vw,260px)] overflow-hidden rounded-full bg-black shadow-[18px_20px_0_#d5292d] lg:absolute lg:-right-4 lg:top-[3%] lg:mx-0 lg:mt-0 lg:w-[23%] lg:min-w-[210px]">
-              <img className="h-full w-full object-cover grayscale" src={heroArtwork} alt="Abstract AI network sculpture with glowing red signal nodes" fetchPriority="high" />
-              <div ref={reveal} className="absolute inset-0" style={{ clipPath: `circle(25% at ${pointer.x}% ${pointer.y}%)` }}><img className="h-full w-full object-cover" src={heroArtwork} alt="" aria-hidden="true" /></div>
-              <span className="absolute bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.2em] text-white">Explore / 01</span>
+            <p className="hero-copy mt-8 max-w-md text-sm leading-relaxed text-[#b9bdc2] sm:text-base">Junior AI engineer building reliable data workflows, intelligent backends, and useful ML products.</p>
+            <div className="hero-actions mt-8 flex flex-wrap gap-3"><a href="#work" className="rounded-full bg-[#c8ab6b] px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-[#10151b] transition hover:bg-[#ddc48a] active:scale-[.98]">View my work ↘</a><a href="#contact" className="rounded-full border border-[#c8ab6b]/55 px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-[#e4d5ae] transition hover:border-[#ddc48a] hover:text-[#ddc48a] active:scale-[.98]">Let’s talk</a></div>
+          </div>
+          <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto aspect-[3/4] w-[min(72vw,410px)] overflow-hidden rounded-b-md rounded-t-[13rem] border border-[#c8ab6b]/45 bg-[#161b22] shadow-[18px_18px_0_rgba(200,171,107,.13)] lg:mr-0">
+              <img className="h-full w-full object-cover grayscale" src={heroArtwork} alt="Nocturnal city skyline with a glowing AI network above the rooftops" fetchPriority="high" />
+              <div ref={reveal} className="absolute inset-0" style={{ clipPath: 'circle(24% at 52% 46%)' }}><img className="h-full w-full object-cover" src={heroArtwork} alt="" aria-hidden="true" /></div>
             </div>
-          </div>
-          <div className="mt-12 grid max-w-xl gap-7 sm:ml-[8%] sm:grid-cols-[1fr_auto] sm:items-end">
-            <p className="hero-copy max-w-sm text-sm leading-relaxed text-black/65 sm:text-base">Junior AI engineer building reliable data workflows, intelligent backend systems, and useful ML-powered products.</p>
-            <div className="hero-actions flex gap-3"><a href="#work" className="rounded-full bg-[#151515] px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-white transition hover:bg-[#d5292d]">View my work ↘</a><a href="#contact" className="rounded-full border border-black/20 px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] transition hover:border-[#d5292d] hover:text-[#d5292d]">Let’s talk</a></div>
-          </div>
-          <div className="hero-meta mt-14 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[.16em] text-black/45"><span className="h-2 w-2 rounded-full bg-[#d5292d]" /> Available for select collaborations <span className="ml-auto hidden sm:block">Scroll to unspool</span></div>
         </div>
       </section>
 
-      <section id="about" className="about-section relative overflow-hidden border-t border-black/15 bg-[#e9e6e0] px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-        <Web className="absolute -left-16 -top-14 h-72 w-72 opacity-15" />
-        <Web className="absolute -right-20 top-0 h-64 w-64 opacity-15" />
+      <section id="about" className="about-section relative overflow-hidden border-t border-white/10 bg-[#171d25] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="light-beam pointer-events-none absolute -left-[35%] top-[-35%] h-[90%] w-[80%] rotate-[-20deg] opacity-20" aria-hidden="true" />
+        <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-24">
           <div className="pt-8">
-            <div className="about-eyebrow mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.22em] text-[#d5292d]"><Spider /> The person behind the code</div>
-            <h2 className="font-display text-[clamp(3rem,7.4vw,8rem)] uppercase leading-[.8] tracking-[-.07em]">
-              <span className="about-line block overflow-hidden">Curiosity</span><span className="about-line block overflow-hidden pl-[8%] italic">into code<span className="text-[#d5292d]">.</span></span>
+            <div className="about-eyebrow mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.22em] text-[#c8ab6b]"><WingMark /> The person behind the code</div>
+            <h2 className="font-display text-[clamp(3rem,7.4vw,8rem)] uppercase leading-[.9] tracking-[-.07em]">
+              <span className="about-line block overflow-hidden">Curiosity</span><span className="about-line block overflow-hidden pl-[8%] italic">into code<span className="text-[#c8ab6b]">.</span></span>
             </h2>
-            <div className="mt-12 max-w-lg space-y-5 text-[15px] leading-relaxed text-black/65 sm:text-base">
+            <div className="mt-12 max-w-lg space-y-5 text-[15px] leading-relaxed text-[#b9bdc2] sm:text-base">
               <p className="about-copy">I’m Nigazhvan, a Junior AI Engineer with a practical foundation in Python, SQL, data processing, ETL pipelines, and backend development.</p>
               <p className="about-copy">I build automated AWS workflows, transform and validate datasets, and develop reliable backend solutions with FastAPI and PostgreSQL. I enjoy solving data problems with thoughtful engineering, quality assurance, and collaborative delivery.</p>
             </div>
-            <div className="mt-10 flex max-w-xl flex-wrap gap-2.5">{skills.map((skill) => <span className="skill-pill rounded-full border border-black/15 bg-[#f2f0ec]/70 px-4 py-2 font-mono text-[10px] uppercase tracking-[.09em]" key={skill}>{skill}</span>)}</div>
+            <div className="mt-10 flex max-w-xl flex-wrap gap-2.5">{skills.map((skill) => <span className="skill-pill rounded-full border border-[#c8ab6b]/25 bg-[#242b34] px-4 py-2 font-mono text-[10px] uppercase tracking-[.09em] text-[#ddcfae]" key={skill}>{skill}</span>)}</div>
           </div>
-          <div className="relative flex min-h-[500px] items-end justify-center lg:min-h-[650px]">
-            <div className="absolute left-1/2 top-0 h-[28%] w-px bg-black/35" />
-            <div ref={portrait} className="portrait-wrap relative mt-[13%] aspect-square w-[min(84vw,490px)] rounded-full border border-[#d5292d]/40 p-3">
-              <div className="portrait-halo absolute inset-0 rounded-full bg-[#d5292d]/20 blur-2xl" />
-              <div className="relative h-full overflow-hidden rounded-full border-[7px] border-[#151515] bg-[#151515]"><img className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85" alt="Collaborative technology team" /></div>
-              <div className="absolute -bottom-6 right-[9%] flex h-20 w-20 items-center justify-center rounded-full bg-[#d5292d] font-mono text-[9px] uppercase leading-tight tracking-[.12em] text-white">Reliable<br />always</div>
+          <div className="relative flex min-h-[420px] items-center justify-center lg:min-h-[600px]">
+            <div ref={portrait} className="portrait-wrap relative aspect-square w-[min(84vw,490px)] rounded-full border border-[#c8ab6b]/55 p-3">
+              <div className="portrait-halo absolute inset-0 rounded-full bg-[#c8ab6b]/20 blur-2xl" />
+              <div className="relative h-full overflow-hidden rounded-full border-[7px] border-[#0d1219] bg-[#0d1219]"><img className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85" alt="Collaborative technology team" /></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="work" className="section-reveal relative overflow-hidden bg-[#151515] px-5 py-24 text-[#f2f0ec] sm:px-8 lg:px-12 lg:py-36">
-        <Web className="absolute -right-20 -top-20 h-80 w-80 opacity-20 [stroke:#f2f0ec]" />
+      <section id="work" className="section-reveal relative overflow-hidden bg-[#0f151c] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <ShadowBat />
         <div className="relative mx-auto max-w-[1400px]">
-          <div className="reveal-item flex items-end justify-between border-b border-white/20 pb-8"><div><p className="font-mono text-[10px] uppercase tracking-[.22em] text-[#e84c4f]">02 / Selected work</p><h2 className="font-display mt-4 text-[clamp(3.8rem,8vw,8rem)] uppercase leading-[.78] tracking-[-.07em]">Things I’ve<br /><span className="italic">built.</span></h2></div><span className="hidden font-mono text-[10px] uppercase tracking-[.2em] text-white/45 sm:block">Data to decision</span></div>
-          <div className="grid lg:grid-cols-2">{projects.map((project, index) => <article key={project.title} className="reveal-item group border-b border-white/15 py-9 lg:pr-12 [&:nth-child(odd)]:lg:border-r [&:nth-child(odd)]:lg:pr-12 [&:nth-child(even)]:lg:pl-12"><div className="flex justify-between font-mono text-[10px] uppercase tracking-[.16em] text-[#e84c4f]"><span>0{index + 1} / {project.type}</span><span>{project.year}</span></div><h3 className="mt-9 text-3xl font-semibold tracking-[-.045em] transition group-hover:text-[#e84c4f] sm:text-4xl">{project.title}</h3><p className="mt-3 font-mono text-[10px] uppercase tracking-[.12em] text-white/50">{project.stack}</p><p className="mt-6 max-w-lg text-sm leading-relaxed text-white/65 sm:text-base">{project.copy}</p></article>)}</div>
+          <h2 className="reveal-item font-display border-b border-[#c8ab6b]/25 pb-9 text-[clamp(3.5rem,7.5vw,7.5rem)] uppercase leading-[.9] tracking-[-.07em]">Selected <span className="text-[#c8ab6b]">work.</span></h2>
+          <div className="grid lg:grid-cols-2">{projects.map((project) => <article key={project.title} className="reveal-item group border-b border-[#c8ab6b]/20 py-9 lg:pr-12 [&:nth-child(odd)]:lg:border-r [&:nth-child(even)]:lg:pl-12"><div className="flex justify-between gap-4 font-mono text-[10px] uppercase tracking-[.16em] text-[#c8ab6b]"><span>{project.type}</span><span>{project.year}</span></div><h3 className="mt-9 text-3xl font-semibold tracking-[-.045em] transition group-hover:text-[#c8ab6b] sm:text-4xl">{project.title}</h3><p className="mt-3 font-mono text-[10px] uppercase tracking-[.12em] text-[#a5a9ae]">{project.stack}</p><p className="mt-6 max-w-lg text-sm leading-relaxed text-[#b9bdc2] sm:text-base">{project.copy}</p></article>)}</div>
         </div>
       </section>
 
-      <section className="section-reveal relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-        <Web className="absolute -left-20 bottom-0 h-72 w-72 opacity-15" />
-        <div className="relative mx-auto grid max-w-[1400px] gap-20 lg:grid-cols-[.8fr_1.2fr]">
-          <div className="reveal-item"><p className="font-mono text-[10px] uppercase tracking-[.22em] text-[#d5292d]">03 / Experience</p><h2 className="font-display mt-5 text-[clamp(3.8rem,7vw,7.5rem)] uppercase leading-[.78] tracking-[-.07em]">In the<br /><span className="italic">field.</span></h2></div>
-          <div>{experience.map((job) => <article key={job.company} className="reveal-item border-t border-black/20 py-8 first:pt-0"><div className="flex flex-col justify-between gap-3 sm:flex-row"><div><h3 className="text-2xl font-semibold tracking-[-.04em]">{job.company}</h3><p className="mt-1 font-mono text-[10px] uppercase tracking-[.14em] text-[#d5292d]">{job.role} · {job.location}</p></div><p className="font-mono text-[10px] uppercase tracking-[.12em] text-black/50">{job.date}</p></div><ul className="mt-6 space-y-2 text-sm leading-relaxed text-black/65">{job.points.map((point) => <li className="flex gap-3" key={point}><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d5292d]" />{point}</li>)}</ul></article>)}</div>
+      <section className="section-reveal relative overflow-hidden bg-[#151b23] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <ShadowBat />
+        <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+          <h2 className="reveal-item font-display text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Experience<span className="text-[#c8ab6b]">.</span></h2>
+          <div>{experience.map((job) => <article key={job.company} className="reveal-item border-t border-[#c8ab6b]/25 py-8 first:pt-0"><div className="flex flex-col justify-between gap-3 sm:flex-row"><div><h3 className="text-2xl font-semibold tracking-[-.04em]">{job.company}</h3><p className="mt-1 font-mono text-[10px] uppercase tracking-[.14em] text-[#c8ab6b]">{job.role} · {job.location}</p></div><p className="font-mono text-[10px] uppercase tracking-[.12em] text-[#a5a9ae]">{job.date}</p></div><ul className="mt-6 space-y-2 text-sm leading-relaxed text-[#b9bdc2]">{job.points.map((point) => <li className="flex gap-3" key={point}><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c8ab6b]" />{point}</li>)}</ul></article>)}</div>
         </div>
       </section>
 
-      <section className="section-reveal border-t border-black/15 bg-[#d5292d] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr]">
-          <div className="reveal-item"><p className="font-mono text-[10px] uppercase tracking-[.22em] text-white/70">04 / Education</p><h2 className="font-display mt-5 text-[clamp(3.6rem,7vw,7rem)] uppercase leading-[.78] tracking-[-.07em]">Always<br /><span className="italic">learning.</span></h2></div>
-          <div className="reveal-item divide-y divide-white/30 border-y border-white/30">
-            <div className="py-6"><p className="text-xl font-semibold">M.Sc. Artificial Intelligence and Machine Learning</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">Christ Deemed to be University · Bengaluru, Karnataka · Jun 2024 — May 2026</p></div>
-            <div className="py-6"><p className="text-xl font-semibold">B.Sc. Statistics</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-white/70">PSG College of Arts and Science · Coimbatore, Tamil Nadu · Jun 2020 — May 2023</p></div>
+      <section className="section-reveal relative overflow-hidden border-t border-[#c8ab6b]/20 bg-[#1b222b] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <ShadowBat />
+        <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr]">
+          <h2 className="reveal-item font-display text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Always <span className="text-[#c8ab6b]">learning.</span></h2>
+          <div className="reveal-item divide-y divide-[#c8ab6b]/25 border-y border-[#c8ab6b]/25">
+            <div className="py-6"><p className="text-xl font-semibold">M.Sc. Artificial Intelligence and Machine Learning</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#a5a9ae]">Christ Deemed to be University · Bengaluru, Karnataka · Jun 2024 - May 2026</p></div>
+            <div className="py-6"><p className="text-xl font-semibold">B.Sc. Statistics</p><p className="mt-2 font-mono text-[10px] uppercase tracking-[.15em] text-[#a5a9ae]">PSG College of Arts and Science · Coimbatore, Tamil Nadu · Jun 2020 - May 2023</p></div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="section-reveal relative overflow-hidden bg-[#151515] px-5 py-24 text-[#f2f0ec] sm:px-8 lg:px-12 lg:py-32">
-        <Web className="absolute -right-20 -top-20 h-80 w-80 opacity-15 [stroke:#f2f0ec]" />
+      <section id="contact" className="section-reveal relative overflow-hidden bg-[#0c1118] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:gap-24">
           <div className="reveal-item">
-            <h2 className="font-display text-[clamp(4.2rem,9vw,9rem)] uppercase leading-[.78] tracking-[-.07em]">Let’s<br /><span className="italic">connect.</span></h2>
-            <p className="mt-9 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">Have an AI, ML, or data challenge worth solving? I’d love to hear about it.</p>
-            <a href="mailto:nigalgovi@gmail.com" className="mt-8 inline-flex rounded-full bg-[#d5292d] px-6 py-3 font-mono text-[10px] uppercase tracking-[.16em] text-white transition hover:bg-[#e84c4f]">Email me ↗</a>
+            <h2 className="font-display text-[clamp(4rem,8vw,8rem)] uppercase leading-[.9] tracking-[-.07em]">Let’s <span className="text-[#c8ab6b]">connect.</span></h2>
+            <p className="mt-9 max-w-md text-sm leading-relaxed text-[#b9bdc2] sm:text-base">Have an AI, ML, or data challenge worth solving? I’d love to hear about it.</p>
+            <a href="mailto:nigalgovi@gmail.com" className="mt-8 inline-flex rounded-full bg-[#c8ab6b] px-6 py-3 font-mono text-[10px] uppercase tracking-[.16em] text-[#10151b] transition hover:bg-[#ddc48a] active:scale-[.98]">Email me ↗</a>
           </div>
-          <div className="reveal-item divide-y divide-white/20 border-y border-white/20">
-            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="mailto:nigalgovi@gmail.com"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">Email</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">nigalgovi@gmail.com ↗</span></a>
-            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="tel:+918838265269"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">Phone</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">+91 88382 65269 ↗</span></a>
-            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://linkedin.com/in/nigazhvan-g2525" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">LinkedIn</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">nigazhvan-g2525 ↗</span></a>
-            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#e84c4f]">GitHub</span><span className="text-base transition group-hover:text-[#e84c4f] sm:text-lg">Nigazhvan-31 ↗</span></a>
+          <div className="reveal-item divide-y divide-[#c8ab6b]/25 border-y border-[#c8ab6b]/25">
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="mailto:nigalgovi@gmail.com"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">Email</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">nigalgovi@gmail.com ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="tel:+918838265269"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">Phone</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">+91 88382 65269 ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://linkedin.com/in/nigazhvan-g2525" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">LinkedIn</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">nigazhvan-g2525 ↗</span></a>
+            <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">GitHub</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">Nigazhvan-31 ↗</span></a>
           </div>
         </div>
       </section>
