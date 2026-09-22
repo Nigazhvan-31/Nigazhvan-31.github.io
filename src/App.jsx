@@ -19,10 +19,6 @@ const experience = [
   { company: 'ETHARA.AI', location: 'Remote, India', role: 'LLM Intern', date: 'Feb 2026 - Jun 2026', points: ['Processed and validated structured datasets for model training and evaluation.', 'Investigated errors and tested model outputs to improve dataset quality, consistency, and reliability.', 'Worked cross-functionally to deliver accurate data within project timelines.'] }
 ];
 
-function WingMark() {
-  return <span className="wing-mark" aria-hidden="true" />;
-}
-
 function ShadowBat() {
   return <span className="shadow-bat" aria-hidden="true" />;
 }
@@ -50,8 +46,7 @@ export default function App() {
         scrollTrigger: { trigger: '.about-section', start: 'top 72%', once: true }
       });
       about
-        .from('.about-eyebrow', { x: -24, opacity: 0, duration: 0.55 })
-        .from('.about-line', { clipPath: 'inset(0 0 100% 0)', y: 35, stagger: 0.14, duration: 0.95, ease: 'power4.out' }, '-=0.1')
+        .from('.about-line', { clipPath: 'inset(0 0 100% 0)', y: 35, stagger: 0.14, duration: 0.95, ease: 'power4.out' })
         .from('.about-copy', { opacity: 0, rotateX: 18, transformOrigin: 'top center', y: 18, stagger: 0.14, duration: 0.75, ease: 'power3.out' }, '-=0.38')
         .from('.skill-pill', { scale: 0.5, opacity: 0, stagger: 0.07, duration: 0.55, ease: 'back.out(1.8)' }, '-=0.35')
         .from('.portrait-wrap', { opacity: 0, y: 48, duration: 1.15, ease: 'power3.out' }, '-=1.1');
@@ -83,8 +78,11 @@ export default function App() {
       <section className="hero-section relative min-h-[100dvh] overflow-hidden bg-[#0d1219] px-5 pb-12 pt-5 sm:px-8 lg:px-12">
         <div className="light-beam pointer-events-none absolute -right-[14%] -top-[40%] h-[115%] w-[75%] opacity-35" aria-hidden="true" />
         <ShadowBat />
-        <nav className="relative z-10 flex items-center justify-end border-b border-white/15 pb-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:text-xs">
-          <div className="flex gap-4 sm:gap-7"><a className="nav-item hover:text-[#c8ab6b]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#c8ab6b] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#c8ab6b]" href="#contact">Contact</a></div>
+        <nav className="relative z-10 flex flex-col items-start justify-between gap-3 border-b border-white/15 pb-4 sm:flex-row sm:items-center">
+          <blockquote className="max-w-xl text-[10px] leading-relaxed text-[#737a82] sm:text-xs">
+            Why do we fall? So that we can learn to pick ourselves up.
+          </blockquote>
+          <div className="flex shrink-0 gap-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:gap-7 sm:text-xs"><a className="nav-item hover:text-[#c8ab6b]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#c8ab6b] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#c8ab6b]" href="#contact">Contact</a></div>
         </nav>
 
         <div id="top" className="relative z-[1] mx-auto grid min-h-[calc(100dvh-84px)] max-w-[1400px] items-center gap-8 py-12 lg:grid-cols-[1.25fr_.75fr] lg:gap-12 lg:py-8">
@@ -108,9 +106,8 @@ export default function App() {
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-24">
           <div className="pt-8">
-            <div className="about-eyebrow mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.22em] text-[#c8ab6b]"><WingMark /> The person behind the code</div>
-            <h2 className="font-display text-[clamp(3rem,7.4vw,8rem)] uppercase leading-[.9] tracking-[-.07em]">
-              <span className="about-line block overflow-hidden">Curiosity</span><span className="about-line block overflow-hidden pl-[8%] italic">into code<span className="text-[#c8ab6b]">.</span></span>
+            <h2 className="font-display text-[clamp(3.15rem,6.6vw,7.25rem)] uppercase leading-[.9] tracking-[-.07em]">
+              <span className="about-line block overflow-hidden">The person</span><span className="about-line block overflow-hidden pl-[6%] text-[#c8ab6b]">behind the code.</span>
             </h2>
             <div className="mt-12 max-w-lg space-y-5 text-[15px] leading-relaxed text-[#b9bdc2] sm:text-base">
               <p className="about-copy">I’m Nigazhvan, a Junior AI Engineer with a practical foundation in Python, SQL, data processing, ETL pipelines, and backend development.</p>
@@ -130,7 +127,7 @@ export default function App() {
       <section id="work" className="section-reveal relative overflow-hidden bg-[#0f151c] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <ShadowBat />
         <div className="relative mx-auto max-w-[1400px]">
-          <h2 className="reveal-item font-display border-b border-[#c8ab6b]/25 pb-9 text-[clamp(3.5rem,7.5vw,7.5rem)] uppercase leading-[.9] tracking-[-.07em]">Selected <span className="text-[#c8ab6b]">work.</span></h2>
+          <h2 className="reveal-item font-display border-b border-[#c8ab6b]/25 pb-9 text-[clamp(3.2rem,6.7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Intelligence <span className="text-[#c8ab6b]">in action.</span></h2>
           <div className="grid lg:grid-cols-2">{projects.map((project) => <article key={project.title} className="reveal-item group border-b border-[#c8ab6b]/20 py-9 lg:pr-12 [&:nth-child(odd)]:lg:border-r [&:nth-child(even)]:lg:pl-12"><div className="flex justify-between gap-4 font-mono text-[10px] uppercase tracking-[.16em] text-[#c8ab6b]"><span>{project.type}</span><span>{project.year}</span></div><h3 className="mt-9 text-3xl font-semibold tracking-[-.045em] transition group-hover:text-[#c8ab6b] sm:text-4xl">{project.title}</h3><p className="mt-3 font-mono text-[10px] uppercase tracking-[.12em] text-[#a5a9ae]">{project.stack}</p><p className="mt-6 max-w-lg text-sm leading-relaxed text-[#b9bdc2] sm:text-base">{project.copy}</p></article>)}</div>
         </div>
       </section>
@@ -138,7 +135,10 @@ export default function App() {
       <section className="section-reveal relative overflow-hidden bg-[#151b23] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-          <h2 className="reveal-item font-display text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Experience<span className="text-[#c8ab6b]">.</span></h2>
+          <div className="reveal-item">
+            <h2 className="font-display text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Experience<span className="text-[#c8ab6b]">.</span></h2>
+            <p className="mt-5 font-mono text-xs uppercase tracking-[.22em] text-[#c8ab6b] sm:text-sm">Built in practice.</p>
+          </div>
           <div>{experience.map((job) => <article key={job.company} className="reveal-item border-t border-[#c8ab6b]/25 py-8 first:pt-0"><div className="flex flex-col justify-between gap-3 sm:flex-row"><div><h3 className="text-2xl font-semibold tracking-[-.04em]">{job.company}</h3><p className="mt-1 font-mono text-[10px] uppercase tracking-[.14em] text-[#c8ab6b]">{job.role} · {job.location}</p></div><p className="font-mono text-[10px] uppercase tracking-[.12em] text-[#a5a9ae]">{job.date}</p></div><ul className="mt-6 space-y-2 text-sm leading-relaxed text-[#b9bdc2]">{job.points.map((point) => <li className="flex gap-3" key={point}><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c8ab6b]" />{point}</li>)}</ul></article>)}</div>
         </div>
       </section>
@@ -169,6 +169,9 @@ export default function App() {
             <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">GitHub</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">Nigazhvan-31 ↗</span></a>
           </div>
         </div>
+        <blockquote className="reveal-item relative mx-auto mt-20 max-w-[1400px] border-t border-white/10 pt-5 text-right text-xs leading-relaxed text-[#737a82]">
+          “It’s not who I am underneath, but what I do that defines me.”
+        </blockquote>
       </section>
     </main>
   );
