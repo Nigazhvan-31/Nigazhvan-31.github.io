@@ -96,7 +96,7 @@ export default function App() {
         <ShadowBat />
         <nav className="relative z-10 flex flex-col items-start justify-between gap-3 border-b border-white/15 pb-4 sm:flex-row sm:items-center">
           <blockquote className="max-w-xl text-[10px] leading-relaxed text-[#c8ab6b] sm:text-xs">
-            Why do we fall? So that we can learn to pick ourselves up.
+            “Why do we fall? So that we can learn to pick ourselves up.”
           </blockquote>
           <div className="flex w-full shrink-0 justify-between gap-3 font-mono text-[11px] uppercase tracking-[0.16em] sm:w-auto sm:justify-start sm:gap-7 sm:text-xs sm:tracking-[0.2em]"><a className="nav-item inline-flex min-h-11 items-center hover:text-[#c8ab6b]" href="#about">Profile</a><a className="nav-item inline-flex min-h-11 items-center hover:text-[#c8ab6b]" href="#work">Work</a><a className="nav-item inline-flex min-h-11 items-center hover:text-[#c8ab6b]" href="#contact">Contact</a></div>
         </nav>
