@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroArtwork from './assets/nocturne-ai-city.jpg';
+import aboutArtwork from './assets/batman-at-work.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +40,7 @@ export default function App() {
         .from('.hero-copy, .hero-actions', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7 }, '-=0.48')
         .from('.hero-card', { scale: 0.92, y: 32, opacity: 0, duration: 1.1, ease: 'expo.out' }, '-=0.9');
 
-      gsap.to('.light-beam', { opacity: 0.68, duration: 4.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to('.light-beam', { opacity: 0.42, duration: 4.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       gsap.to('.hero-card', { y: -8, duration: 4.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
 
       const about = gsap.timeline({
@@ -74,12 +75,12 @@ export default function App() {
   };
 
   return (
-    <main ref={root} className="bg-[#0d1219] text-[#eeece5] selection:bg-[#c8ab6b] selection:text-[#0d1219]">
-      <section className="hero-section relative min-h-[100dvh] overflow-hidden bg-[#0d1219] px-5 pb-12 pt-5 sm:px-8 lg:px-12">
+    <main ref={root} className="bg-[#07090d] text-[#eeece5] selection:bg-[#c8ab6b] selection:text-[#07090d]">
+      <section className="hero-section noir-surface noir-hero relative min-h-[100dvh] overflow-hidden px-5 pb-12 pt-5 sm:px-8 lg:px-12">
         <div className="light-beam pointer-events-none absolute -right-[14%] -top-[40%] h-[115%] w-[75%] opacity-35" aria-hidden="true" />
         <ShadowBat />
         <nav className="relative z-10 flex flex-col items-start justify-between gap-3 border-b border-white/15 pb-4 sm:flex-row sm:items-center">
-          <blockquote className="max-w-xl text-[10px] leading-relaxed text-[#737a82] sm:text-xs">
+          <blockquote className="max-w-xl text-[10px] leading-relaxed text-[#c8ab6b] sm:text-xs">
             Why do we fall? So that we can learn to pick ourselves up.
           </blockquote>
           <div className="flex shrink-0 gap-4 font-mono text-[10px] uppercase tracking-[0.2em] sm:gap-7 sm:text-xs"><a className="nav-item hover:text-[#c8ab6b]" href="#about">Profile</a><a className="nav-item hidden hover:text-[#c8ab6b] sm:block" href="#work">Work</a><a className="nav-item hover:text-[#c8ab6b]" href="#contact">Contact</a></div>
@@ -94,14 +95,14 @@ export default function App() {
             <p className="hero-copy mt-8 max-w-md text-sm leading-relaxed text-[#b9bdc2] sm:text-base">Junior AI engineer building reliable data workflows, intelligent backends, and useful ML products.</p>
             <div className="hero-actions mt-8 flex flex-wrap gap-3"><a href="#work" className="rounded-full bg-[#c8ab6b] px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-[#10151b] transition hover:bg-[#ddc48a] active:scale-[.98]">View my work ↘</a><a href="#contact" className="rounded-full border border-[#c8ab6b]/55 px-5 py-3 font-mono text-[10px] uppercase tracking-[.15em] text-[#e4d5ae] transition hover:border-[#ddc48a] hover:text-[#ddc48a] active:scale-[.98]">Let’s talk</a></div>
           </div>
-          <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto aspect-[3/4] w-[min(72vw,410px)] overflow-hidden rounded-b-md rounded-t-[13rem] border border-[#c8ab6b]/45 bg-[#161b22] shadow-[18px_18px_0_rgba(200,171,107,.13)] lg:mr-0">
+          <div ref={heroVisual} onMouseMove={handleMove} className="hero-card relative mx-auto aspect-[3/4] w-[min(72vw,410px)] overflow-hidden rounded-b-md rounded-t-[13rem] border border-[#c8ab6b]/45 bg-[#11151a] shadow-[18px_18px_0_rgba(112,14,20,.28)] lg:mr-0">
               <img className="h-full w-full object-cover grayscale" src={heroArtwork} alt="Nocturnal city skyline with a glowing AI network above the rooftops" fetchPriority="high" />
               <div ref={reveal} className="absolute inset-0" style={{ clipPath: 'circle(24% at 52% 46%)' }}><img className="h-full w-full object-cover" src={heroArtwork} alt="" aria-hidden="true" /></div>
             </div>
         </div>
       </section>
 
-      <section id="about" className="about-section relative overflow-hidden border-t border-white/10 bg-[#171d25] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section id="about" className="about-section noir-surface noir-about relative overflow-hidden border-t border-white/10 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <div className="light-beam pointer-events-none absolute -left-[35%] top-[-35%] h-[90%] w-[80%] rotate-[-20deg] opacity-20" aria-hidden="true" />
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-24">
@@ -113,18 +114,21 @@ export default function App() {
               <p className="about-copy">I’m Nigazhvan, a Junior AI Engineer with a practical foundation in Python, SQL, data processing, ETL pipelines, and backend development.</p>
               <p className="about-copy">I build automated AWS workflows, transform and validate datasets, and develop reliable backend solutions with FastAPI and PostgreSQL. I enjoy solving data problems with thoughtful engineering, quality assurance, and collaborative delivery.</p>
             </div>
-            <div className="mt-10 flex max-w-xl flex-wrap gap-2.5">{skills.map((skill) => <span className="skill-pill rounded-full border border-[#c8ab6b]/25 bg-[#242b34] px-4 py-2 font-mono text-[10px] uppercase tracking-[.09em] text-[#ddcfae]" key={skill}>{skill}</span>)}</div>
+            <div className="mt-10 flex max-w-xl flex-wrap gap-2.5">{skills.map((skill) => <span className="skill-pill rounded-full border border-[#c8ab6b]/25 bg-[#15191f] px-4 py-2 font-mono text-[10px] uppercase tracking-[.09em] text-[#ddcfae]" key={skill}>{skill}</span>)}</div>
           </div>
           <div className="relative flex min-h-[420px] items-center justify-center lg:min-h-[600px]">
             <div ref={portrait} className="portrait-wrap relative aspect-square w-[min(84vw,490px)] rounded-full border border-[#c8ab6b]/55 p-3">
               <div className="portrait-halo absolute inset-0 rounded-full bg-[#c8ab6b]/20 blur-2xl" />
-              <div className="relative h-full overflow-hidden rounded-full border-[7px] border-[#0d1219] bg-[#0d1219]"><img className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85" alt="Collaborative technology team" /></div>
+              <div className="group relative h-full overflow-hidden rounded-full border-[7px] border-[#07090d] bg-[#07090d]">
+                <img className="absolute inset-0 h-full w-full scale-110 object-cover opacity-35 blur-xl grayscale transition duration-700 group-hover:grayscale-0" src={aboutArtwork} alt="" aria-hidden="true" />
+                <img className="relative z-10 h-full w-full translate-x-[5%] scale-[1.38] object-contain grayscale transition duration-700 group-hover:grayscale-0" src={aboutArtwork} alt="Batman working at a laptop in a dark office" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="work" className="section-reveal relative overflow-hidden bg-[#0f151c] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section id="work" className="section-reveal noir-surface noir-work relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <ShadowBat />
         <div className="relative mx-auto max-w-[1400px]">
           <h2 className="reveal-item font-display border-b border-[#c8ab6b]/25 pb-9 text-[clamp(3.2rem,6.7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Intelligence <span className="text-[#c8ab6b]">in action.</span></h2>
@@ -132,7 +136,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section-reveal relative overflow-hidden bg-[#151b23] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section className="section-reveal noir-surface noir-experience relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <div className="reveal-item">
@@ -143,7 +147,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section-reveal relative overflow-hidden border-t border-[#c8ab6b]/20 bg-[#1b222b] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <section className="section-reveal noir-surface noir-education relative overflow-hidden border-t border-[#c8ab6b]/20 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.8fr_1.2fr]">
           <h2 className="reveal-item font-display text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[.9] tracking-[-.07em]">Always <span className="text-[#c8ab6b]">learning.</span></h2>
@@ -154,7 +158,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="section-reveal relative overflow-hidden bg-[#0c1118] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section id="contact" className="section-reveal noir-surface noir-contact relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <ShadowBat />
         <div className="relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:gap-24">
           <div className="reveal-item">
@@ -169,7 +173,7 @@ export default function App() {
             <a className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between" href="https://github.com/Nigazhvan-31" target="_blank" rel="noreferrer"><span className="font-mono text-[10px] uppercase tracking-[.17em] text-[#c8ab6b]">GitHub</span><span className="text-base transition group-hover:text-[#c8ab6b] sm:text-lg">Nigazhvan-31 ↗</span></a>
           </div>
         </div>
-        <blockquote className="reveal-item relative mx-auto mt-20 max-w-[1400px] border-t border-white/10 pt-5 text-right text-xs leading-relaxed text-[#737a82]">
+        <blockquote className="reveal-item relative mx-auto mt-20 max-w-[1400px] border-t border-white/10 pt-5 text-right text-xs leading-relaxed text-[#c8ab6b]">
           “It’s not who I am underneath, but what I do that defines me.”
         </blockquote>
       </section>
