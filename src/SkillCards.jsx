@@ -130,7 +130,6 @@ function IdentityCard({ portrait }) {
       <CardFrame front />
       <g className="tva-ink" aria-hidden="true">
         <path d="M17 5 H84 V993 H17Z M527 5 H586 V993 H527Z M63 108 H538 V171 H63Z" />
-        <rect x="119" y="38" width="374" height="46" />
       </g>
       <path className="tva-stock" d="M113 184 H498 Q527 184 527 214 V248 Q527 272 551 293 L574 315 V900 H36 V315 L59 289 Q84 267 84 242 V214 Q84 184 113 184Z" aria-hidden="true" />
       <path className="tva-ink" d="M83 993 V490 Q83 432 148 432 H469 Q527 432 527 490 V834 Q527 864 551 884 L574 902 V993 H471 V917 H352 V993 H323 V890 H290 V993 H258 V917 H137 V993 H36 V902 L60 883 Q83 865 83 834Z" aria-hidden="true" />
@@ -141,7 +140,6 @@ function IdentityCard({ portrait }) {
         <path d="M63 162 H538 M63 167 H538" />
         <path d="M138 893 H196 L215 905 H258 M352 905 H391 L408 893 H471" />
       </g>
-      <text className="tva-plaque" x="306" y="69" textAnchor="middle" textLength="344" lengthAdjust="spacingAndGlyphs">ARTIFICIAL INTELLIGENCE</text>
       <text className="tva-serial" x="306" y="150" textAnchor="middle" textLength="296" lengthAdjust="spacingAndGlyphs">NIGAZHVAN G / AI ENGINEER</text>
       <g className="tva-ink" aria-hidden="true">
         <path d="M116 222 H169 L116 290Z M169 222 H228 V394 H169Z" />

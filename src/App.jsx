@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CircuitryIcon, BriefcaseIcon, EnvelopeIcon } from '@phosphor-icons/react';
+import batmanProfileIcon from './assets/batman-profile-icon.png';
 import skillsPortrait from './assets/nigazhvan-skills-crop.png';
 import graduationPortrait from './assets/nigazhvan-portrait.jpg';
 import SkillCards from './SkillCards';
@@ -100,6 +102,8 @@ const experience = [
 ];
 
 const views = ['profile', 'skills', 'work', 'contact'];
+const navigationLabels = { profile: 'Profile', skills: 'Skills', work: 'Work', contact: 'Contact' };
+const navigationIcons = { skills: CircuitryIcon, work: BriefcaseIcon, contact: EnvelopeIcon };
 
 function viewFromHash() {
   const hash = window.location.hash.replace('#', '');
@@ -166,7 +170,13 @@ export default function App() {
           <nav className="site-nav" aria-label="Primary navigation">
             <a className="wordmark" href="#profile" aria-label="Nigazhvan home" onClick={(event) => { event.preventDefault(); showView('profile'); }}>Nigazhvan</a>
             <div className="nav-links">
-              {views.map((view) => <a key={view} href={`#${view}`} aria-current={activeView === view ? 'page' : undefined} onClick={(event) => { event.preventDefault(); showView(view); }}>{view}</a>)}
+              {views.map((view) => {
+                const Icon = navigationIcons[view];
+                return <a key={view} href={`#${view}`} aria-label={navigationLabels[view]} aria-current={activeView === view ? 'page' : undefined} onClick={(event) => { event.preventDefault(); showView(view); }}>
+                  {Icon ? <Icon className="nav-icon" size={24} weight="light" aria-hidden="true" /> : <img className="nav-profile-icon" src={batmanProfileIcon} alt="" width="890" height="1200" />}
+                  <span className="nav-tooltip" aria-hidden="true">{navigationLabels[view]}</span>
+                </a>;
+              })}
             </div>
           </nav>
         </header>
