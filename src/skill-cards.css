@@ -1,0 +1,50 @@
+.tva-skills {
+  --tva-blue: #69a8c7;
+  --tva-line: #578ca5;
+  --tva-black: #080f12;
+  width: min(100%, 1130px);
+  margin-inline: auto;
+}
+
+.tva-card-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 4%; }
+.tva-card { position: relative; isolation: isolate; aspect-ratio: 620 / 1000; width: 100%; margin: 0; overflow: hidden; border-radius: 5% / 3.1%; background: var(--tva-black); }
+.tva-card::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .16; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.76' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E"); }
+.tva-art { display: block; width: 100%; height: 100%; }
+.tva-stock { fill: var(--tva-blue); }
+.tva-ink { fill: var(--tva-black); color: var(--tva-black); }
+.tva-edge { fill: none; stroke: #a0c9db; stroke-width: 1.5; opacity: .45; }
+.tva-front-traces { fill: none; stroke: var(--tva-blue); stroke-width: 1.6; opacity: .72; }
+.tva-plaque, .tva-serial { fill: var(--tva-blue); font-family: 'Avenir Next Condensed', 'Arial Narrow', sans-serif; font-weight: 500; font-stretch: condensed; }
+.tva-plaque { font-size: 26px; letter-spacing: 3px; }
+.tva-serial { font-size: 26px; letter-spacing: 1.8px; }
+.tva-photo-keyline { fill: var(--tva-black); stroke: var(--tva-line); stroke-width: 2; }
+.tva-portrait { position: absolute; left: 22%; top: 45.35%; width: 53.5%; height: 42.4%; border-radius: 1.5%; overflow: hidden; background: var(--tva-black); }
+.tva-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; filter: grayscale(1); }
+.tva-portrait::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 25px 3px rgb(8 15 18 / .4); }
+.tva-fine-trace { stroke: var(--tva-line); stroke-width: 1.5; fill: none; stroke-linejoin: round; opacity: .64; }
+.tva-tree-limbs { fill: none; stroke: var(--tva-blue); stroke-width: 4.2; stroke-linejoin: round; stroke-linecap: round; }
+.tva-twigs { fill: none; stroke: var(--tva-blue); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; opacity: .9; }
+.tva-terminal { cursor: pointer; outline: none; }
+.tva-node-target { fill: transparent; }
+.tva-node { fill: var(--tva-blue); stroke: var(--tva-line); stroke-width: 1; transition: fill .15s ease; }
+.tva-node-ring { fill: none; stroke: #d4edf9; stroke-width: 1.5; opacity: 0; }
+.tva-terminal.is-active .tva-node { fill: #d4edf9; }
+.tva-terminal.is-active .tva-node-ring, .tva-terminal:focus-visible .tva-node-ring { opacity: 1; }
+.tva-terminal:focus-visible .tva-node-ring { stroke-width: 3; }
+.tva-node-tooltip rect { fill: #10232d; stroke: #9bc9df; stroke-width: 1; }
+.tva-node-tooltip text { fill: #edf7fb; font-size: 13px; font-family: 'Avenir Next', sans-serif; }
+.tva-skill-explorer { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+.tva-skill-picker { display: grid; gap: .7rem; }
+.tva-skill-picker label { color: var(--muted); font-size: .85rem; }
+.tva-skill-picker select { width: 100%; min-height: 48px; padding: .75rem 2rem .75rem .9rem; border: 1px solid var(--line-strong); border-radius: 3px; color: var(--text); background: #081a24; font: inherit; font-size: .95rem; cursor: pointer; }
+.tva-skill-picker select:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 4px; }
+.tva-skill-detail { min-height: 150px; }
+.tva-skill-detail > span { color: var(--accent); font-size: .8rem; }
+.tva-skill-detail h3 { margin: .35rem 0 .65rem; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.1; font-weight: 500; letter-spacing: -.04em; }
+.tva-skill-detail p { margin: 0; max-width: 56ch; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+
+@media (max-width: 767px) {
+  .tva-card-pair { grid-template-columns: 1fr; gap: 1.6rem; max-width: 450px; margin-inline: auto; }
+  .tva-skill-explorer { grid-template-columns: 1fr; gap: 1.5rem; max-width: 450px; margin: 1.6rem auto 0; padding-top: 1.3rem; }
+  .tva-skill-detail { min-height: 0; }
+}
